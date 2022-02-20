@@ -1,11 +1,13 @@
 {
   "require": {
     "symfony/console": "~2.0",
-    "guzzlehttp/guzzle": "~5.0"
+    "guzzlehttp/guzzle": "~5.0",
+    "symfony/finder": "^5.4"
   },
   "autoload": {
     "psr-4": {
-      "Acme\\": "src"
+      "Ashiba\\": "src",
+      "Ashiba\\Commands\\": "src/commands"
     }
   }
 }
