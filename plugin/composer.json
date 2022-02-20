@@ -1,0 +1,11 @@
+{
+    "autoload" : {
+        "psr-4" : {
+            "Ashiba\\" : "app",
+            "Ashiba\\Controllers\\" : "app/controllers"
+        }
+    },
+    "require": {
+        "symfony/finder": "^5.4"
+    }
+}
