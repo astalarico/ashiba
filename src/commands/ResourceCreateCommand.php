@@ -6,15 +6,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class ControllerCreateCommand extends SymfonyCommand {
+class ResourceCreateCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('create:controller')
-             ->setDescription('Add a new controller')
+        $this->setName('create:plugin')
+             ->setDescription('Create a new plugin')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,7 @@ class ControllerCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Controller Created!</info>');
+        $output->writeln('<info>Plugin Create Created!</info>');
     }
 
 }

@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class PluginCreateCommand extends SymfonyCommand {
+class ControllerDeleteCommand extends SymfonyCommand {
 
     /**
      * Configure the command.

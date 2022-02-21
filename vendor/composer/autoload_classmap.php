@@ -7,7 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Ashiba\\Commands\\ControllerCreateCommand' => $baseDir . '/src/commands/ControllerCreateCommand.php',
+    'Ashiba\\Commands\\ControllerDeleteCommand' => $baseDir . '/src/commands/ControllerDeleteCommand.php',
     'Ashiba\\Commands\\PluginCreateCommand' => $baseDir . '/src/commands/PluginCreateCommand.php',
+    'Ashiba\\Commands\\ResourceCreateCommand' => $baseDir . '/src/commands/ResourceCreateCommand.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'GuzzleHttp\\BatchResults' => $vendorDir . '/guzzlehttp/guzzle/src/BatchResults.php',

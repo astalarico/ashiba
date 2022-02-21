@@ -96,7 +96,9 @@ class ComposerStaticInit063b61b6938ab966ca6c2a435c73c153
 
     public static $classMap = array (
         'Ashiba\\Commands\\ControllerCreateCommand' => __DIR__ . '/../..' . '/src/commands/ControllerCreateCommand.php',
+        'Ashiba\\Commands\\ControllerDeleteCommand' => __DIR__ . '/../..' . '/src/commands/ControllerDeleteCommand.php',
         'Ashiba\\Commands\\PluginCreateCommand' => __DIR__ . '/../..' . '/src/commands/PluginCreateCommand.php',
+        'Ashiba\\Commands\\ResourceCreateCommand' => __DIR__ . '/../..' . '/src/commands/ResourceCreateCommand.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'GuzzleHttp\\BatchResults' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/BatchResults.php',
