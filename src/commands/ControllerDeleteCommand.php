@@ -13,8 +13,8 @@ class ControllerDeleteCommand extends SymfonyCommand {
      */
     public function configure()
     {
-        $this->setName('create:plugin')
-             ->setDescription('Create a new plugin')
+        $this->setName('delete:controller')
+             ->setDescription('Delete a Controller')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,7 @@ class ControllerDeleteCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Plugin Create Created!</info>');
+        $output->writeln('<info>Controller deleted</info>');
     }
 
 }

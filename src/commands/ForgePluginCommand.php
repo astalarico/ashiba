@@ -6,15 +6,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class ResourceCreateCommand extends SymfonyCommand {
+class ForgePluginCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('create:resource')
-             ->setDescription('Create a new resource')
+        $this->setName('forge')
+             ->setDescription('Forge a new ashiba plugin')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,8 @@ class ResourceCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info> Resource Created!</info>');
+        // clone copy of plugin with a name from input
+        $output->writeln('<info> New Ashiba Plugin Forged</info>');
     }
 
 }

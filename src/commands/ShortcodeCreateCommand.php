@@ -6,15 +6,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class ResourceCreateCommand extends SymfonyCommand {
+class ShortcodeCreateCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('create:resource')
-             ->setDescription('Create a new resource')
+        $this->setName('create:shortcode')
+             ->setDescription('Create a new shortcode')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,7 @@ class ResourceCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info> Resource Created!</info>');
+        $output->writeln('<info> shortcode Created!</info>');
     }
 
 }

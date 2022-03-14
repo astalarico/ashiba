@@ -6,15 +6,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class PluginCreateCommand extends SymfonyCommand {
+class ShortcodeDeleteCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('create:plugin')
-             ->setDescription('Create a new plugin')
+        $this->setName('delete:shortcode')
+             ->setDescription('Delete a shortcode')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,7 @@ class PluginCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Plugin Create Created!</info>');
+        $output->writeln('<info>Shortcode deleted</info>');
     }
 
 }
