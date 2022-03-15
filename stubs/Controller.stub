@@ -1,0 +1,8 @@
+<?php
+
+namespace MID\Functions\Controllers;
+
+class {{className}} {
+
+
+}

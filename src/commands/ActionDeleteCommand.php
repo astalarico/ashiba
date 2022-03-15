@@ -6,15 +6,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class ResourceDeleteCommand extends SymfonyCommand {
+class ActionDeleteCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('delete:resource')
-             ->setDescription('Delete a resource')
+        $this->setName('delete:action')
+             ->setDescription('Delete a controller action')
              ->addArgument('name', InputArgument::REQUIRED);
     }
 
@@ -27,7 +27,7 @@ class ResourceDeleteCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Resource deleted</info>');
+        $output->writeln('<info>Action deleted</info>');
     }
 
 }

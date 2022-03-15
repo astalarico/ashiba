@@ -6,16 +6,17 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
-class ModelCreateCommand extends SymfonyCommand {
+class ActionAddCommand extends SymfonyCommand {
 
     /**
      * Configure the command.
      */
     public function configure()
     {
-        $this->setName('create:model')
-             ->setDescription('Create a new model')
-             ->addArgument('name', InputArgument::REQUIRED);
+        $this->setName('add:action')
+             ->setDescription('Add a new controller action method')
+             ->addArgument('name', InputArgument::REQUIRED)
+             ->addArgument('controller', InputArgument::REQUIRED);
     }
 
     /**
@@ -27,7 +28,7 @@ class ModelCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        new ClassFromStub( $input, $output,$this->getName() );
+        $output->writeln('<info>Controller Action Method Added!</info>');
     }
 
 }

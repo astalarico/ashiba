@@ -1,0 +1,11 @@
+<?php
+
+namespace MID\Functions\Models;
+use MID\Functions\BaseClasses\Model;
+
+class {{className}} extends Model{
+
+    public function __construct(){
+        
+    }
+}

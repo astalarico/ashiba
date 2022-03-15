@@ -8,6 +8,7 @@
     "psr-4": {
       "Ashiba\\": "src",
       "Ashiba\\Commands\\": "src/commands"
+
     }
   }
 }

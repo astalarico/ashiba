@@ -1,11 +1,11 @@
 <?php
 namespace MID\Functions\Shortcodes;
 use MID\Functions\Utility as U;
+use MID\Functions\BaseClasses\Shortcode;
 
-class Shortcode {
+class {{className}} extends Shortcode{
 
-    public function setup_shortcode( $handle,  $snaked_handle, $atts, $defaults )
-    { 
+    public function setup( $handle, $snake_handle, $atts, $defaults ){ 
 
         // Data and Setup 
         // $atts = array_key_exists('attributes', $config) ?? array();
@@ -29,7 +29,7 @@ class Shortcode {
         U::add_js_resource( $handle, 'client');
         U::add_css_resource( $handle, 'client');
 
-        self::localize( $snaked_handle, $merged_data );
+        self::localize( $snake_handle, $merged_data );
 
         echo self::create_output_root( $handle );
     }
