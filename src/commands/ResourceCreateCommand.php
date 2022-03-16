@@ -15,7 +15,7 @@ class ResourceCreateCommand extends SymfonyCommand {
      */
     public function configure()
     {
-        $this->setName('create:resource-set')
+        $this->setName('create:resource')
              ->setDescription('Create a new set of resources: controller, model, view, shortcode, js, scss files.')
              ->addArgument('name', InputArgument::REQUIRED);
     }
@@ -38,12 +38,20 @@ class ResourceCreateCommand extends SymfonyCommand {
             ['client', 'admin'],
             0
         );
-  
+        $viewQuestion = new ChoiceQuestion(
+            'Add a view file? (defaults to no)',
+            // choices can also be PHP objects that implement __toString() method
+            ['no', 'yes'],
+            0
+        );
+        
         $question->setErrorMessage('Area %s is invalid.');
-    
+        $viewQuestion->setErrorMessage('Answer %s is invalid.');
+
+        $createView   = $helper->ask($input, $output, $viewQuestion);
         $resourceArea = $helper->ask($input, $output, $question);
 
-        new ResourceFiles($input, $output, $resourceArea );
+        new ResourceFiles($input, $output, $resourceArea, $createView);
         
         // create new view -> resource name.php
 

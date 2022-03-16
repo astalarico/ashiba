@@ -34,11 +34,12 @@ class ResourceSetCreateCommand extends SymfonyCommand {
         new ClassFromStub($input, $output, 'create:controller' );
         // create new model
         new ClassFromStub($input, $output, 'create:model' );
-        // create new shortcode
-        new ClassFromStub($input, $output, 'create:shortcode' );
+
         // create new js -> {admin}|{client} -> resource name -> index.js file
         $helper = $this->getHelper('question');
-        $question = new ChoiceQuestion(
+
+     
+        $areaQuestion = new ChoiceQuestion(
             'Select a resource area (defaults to client)',
             // choices can also be PHP objects that implement __toString() method
             ['client', 'admin'],
@@ -50,11 +51,26 @@ class ResourceSetCreateCommand extends SymfonyCommand {
             ['no', 'yes'],
             0
         );
-        $question->setErrorMessage('Area %s is invalid.');
+
+        $shortcodeQuestion = new ChoiceQuestion(
+            'Add a view shortcode? (defaults to no)',
+            // choices can also be PHP objects that implement __toString() method
+            ['no', 'yes'],
+            0
+        );
+        
+
+        if( $shortcodeQuestion === 'yes' )
+        {
+            new ClassFromStub($input, $output, 'create:shortcode' );
+        }
+        
+        $areaQuestion->setErrorMessage('Area %s is invalid.');
+        $viewQuestion->setErrorMessage('Answer %s is invalid.');
         $viewQuestion->setErrorMessage('Answer %s is invalid.');
 
         $createView   = $helper->ask($input, $output, $viewQuestion);
-        $resourceArea = $helper->ask($input, $output, $question);
+        $resourceArea = $helper->ask($input, $output, $areaQuestion);
 
         new ResourceFiles($input, $output, $resourceArea, $createView );
 

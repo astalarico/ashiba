@@ -13,9 +13,9 @@ class ClassFromStub{
         $stubContents   = file_get_contents( APP_PATH . "/stubs/" . ucfirst($entitySingular) . ".stub");
         $classContents  = str_replace( '{{className}}', $className, $stubContents );
 
-        $fileLocation = "/var/www/html/wp/wp-content/plugins/mid-functions/app/{$entityPlural}/" . ucfirst($className). ".php";
+        $fileLocation = "/var/www/html/wp/wp-content/plugins/mid-functions/app/{$entityPlural}/{$className}.php";
         if( ! file_exists( $fileLocation ) ){
-            file_put_contents( "/var/www/html/wp/wp-content/plugins/mid-functions/app/{$entityPlural}/" . ucfirst($className). ".php", $classContents );
+            file_put_contents(  $fileLocation , $classContents );
             $output->writeln("<info> shortcode {$className} Created!</info>");
         }else{
             $output->writeln("<info> shortcode {$className} Already Exists!</info>");
