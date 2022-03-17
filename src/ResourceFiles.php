@@ -26,7 +26,7 @@ class ResourceFiles
             file_put_contents( $jsFileLocation . '/index.js', '' );
             $output->writeln( "<info> JS File {$className} Created!</info>" );
         }else{
-            $output->writeln( "<info> Resource File {$className} Already Exists!</info>" );
+            $output->writeln( "<comment> Resource File {$className} Already Exists!</comment>" );
         }
 
         if( ! is_dir( $scssFileLocation ) )
@@ -35,7 +35,7 @@ class ResourceFiles
             file_put_contents( $scssFileLocation . '/index.scss', '' );
             $output->writeln( "<info> SCSS File {$className} Created!</info>" );
         } else {
-            $output->writeln( "<info> Resource File {$className} Already Exists!</info>" );
+            $output->writeln( "<comment> Resource File {$className} Already Exists!</comment>" );
         }
 
         // update package json
@@ -45,33 +45,45 @@ class ResourceFiles
         {
             foreach( $package['scripts'] as $key => $command )
             {
-               
                 $package['scripts'][ "{$slug}-watch"] = "npm run watch --{$snaked}";
                 $package['scripts'][ "{$slug}-dev"] = "npm run development --{$snaked}";
                 $package['scripts'][ "{$slug}-build"] = "npm run production --{$snaked}";
             }
             $package = json_encode( $package );
             file_put_contents( $packageJSONLocation, $package );
+            $output->writeln( "<info> Updated package.json with new scripts</info>" );
         }else{
             $output->writeln( '<error>' .json_last_error_msg() . " in the package.json file. check for trailing commas. </error>" );
         }
     
-
         //update webpack config
-        $stubContent = file_get_contents( $webpackStubLocation );
+        $currentWebpack = file_get_contents( $webpackFileLocation );
+        if( strpos( $currentWebpack, "process.env.npm_config_{$snaked}" ) === false ){
+               
+            $stubContent = file_get_contents( $webpackStubLocation );
 
-        $webpack  = str_replace( 
-            ['{{arg_snaked}}', '{{arg_slug}}'], 
-            [$snaked, $slug], 
-            $stubContent 
-        );
+            $webpack  = str_replace( 
+                ['{{arg_snaked}}', '{{arg_slug}}'], 
+                [$snaked, $slug], 
+                $stubContent 
+            );
 
-        file_put_contents( $webpackFileLocation, $webpack, FILE_APPEND );
-
-        // create view file
-        if( $createView === 'yes' ){
-            file_put_contents( $viewFilesLocation . "$slug.php", '');
+            file_put_contents( $webpackFileLocation, $webpack, FILE_APPEND );
+            $output->writeln( "<info> Updated webpack.mix.js with new build directives </info>" );
+        }else{
+            $output->writeln( "<comment> webpack.mix.js {$className} directives already exist!</comment>" );
         }
 
+        // create view file
+        if( $createView === 'yes' )
+        {
+            if( ! file_exists( $viewFilesLocation . "$slug.php" ) )
+            {
+                file_put_contents( $viewFilesLocation . "$slug.php", '');
+                $output->writeln( "<info> {$className} view file Created!</info>" );
+            }else{
+                $output->writeln( "<comment> {$className} view file already exists!</comment>" );
+            }
+        }
     }
 }

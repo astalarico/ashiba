@@ -1,11 +1,11 @@
 if (process.env.npm_config_{{arg_snaked}}) {
     mix.js(
-        "app/resources/js/client/{{arg_slug}}.js",
-        "public/js/client/mid-{{arg_slug}}.js"
+        "resources/js/client/{{arg_slug}}/index.js",
+        "public/js/client/mid-functions-{{arg_slug}}.js"
     ).react()
     .setResourceRoot('/wp-content/plugins/mid-functions/public');
     mix.sass(
-        "app/resources/sass/client/{{arg_slug}}.scss",
-        "public/css/client/mid-{{arg_slug}}.css"
+        "resources/sass/client/{{arg_slug}}/index.scss",
+        "public/css/client/mid-functions-{{arg_slug}}.css"
     );
 }

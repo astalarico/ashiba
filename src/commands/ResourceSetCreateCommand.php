@@ -30,10 +30,8 @@ class ResourceSetCreateCommand extends SymfonyCommand {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        // create new controller
-        new ClassFromStub($input, $output, 'create:controller' );
-        // create new model
-        new ClassFromStub($input, $output, 'create:model' );
+       
+ 
 
         // create new js -> {admin}|{client} -> resource name -> index.js file
         $helper = $this->getHelper('question');
@@ -53,21 +51,52 @@ class ResourceSetCreateCommand extends SymfonyCommand {
         );
 
         $shortcodeQuestion = new ChoiceQuestion(
-            'Add a view shortcode? (defaults to no)',
+            'Add a shortcode? (defaults to no)',
+            // choices can also be PHP objects that implement __toString() method
+            ['no', 'yes'],
+            0
+        );
+
+        $controllerQuestion = new ChoiceQuestion(
+            'Add a controller? (defaults to no)',
+            // choices can also be PHP objects that implement __toString() method
+            ['no', 'yes'],
+            0
+        );
+
+
+        $modelQuestion = new ChoiceQuestion(
+            'Add a model? (defaults to no)',
             // choices can also be PHP objects that implement __toString() method
             ['no', 'yes'],
             0
         );
         
-
-        if( $shortcodeQuestion === 'yes' )
-        {
+ 
+         $shortcode = $helper->ask($input, $output, $shortcodeQuestion);
+         if( $shortcode === 'yes' )
+         {
+                     // create new controller
             new ClassFromStub($input, $output, 'create:shortcode' );
+         }
+
+        $controller = $helper->ask($input, $output, $controllerQuestion);
+        if( $controller === 'yes' )
+        {
+            new ClassFromStub($input, $output, 'create:controller' );
         }
         
+        $model = $helper->ask($input, $output, $modelQuestion);
+        if( $model === 'yes' )
+        {
+            new ClassFromStub($input, $output, 'create:model' );
+        }
+ 
+
         $areaQuestion->setErrorMessage('Area %s is invalid.');
         $viewQuestion->setErrorMessage('Answer %s is invalid.');
         $viewQuestion->setErrorMessage('Answer %s is invalid.');
+        $controllerQuestion->setErrorMessage('Answer %s is invalid.');
 
         $createView   = $helper->ask($input, $output, $viewQuestion);
         $resourceArea = $helper->ask($input, $output, $areaQuestion);

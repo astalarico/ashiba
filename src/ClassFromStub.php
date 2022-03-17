@@ -16,9 +16,9 @@ class ClassFromStub{
         $fileLocation = "/var/www/html/wp/wp-content/plugins/mid-functions/app/{$entityPlural}/{$className}.php";
         if( ! file_exists( $fileLocation ) ){
             file_put_contents(  $fileLocation , $classContents );
-            $output->writeln("<info> shortcode {$className} Created!</info>");
+            $output->writeln("<info> {$entitySingular } {$className} Created!</info>");
         }else{
-            $output->writeln("<info> shortcode {$className} Already Exists!</info>");
+            $output->writeln("<comment> {$entitySingular} {$className} Already Exists!</comment>");
         }
     }
 }
