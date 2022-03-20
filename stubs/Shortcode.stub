@@ -1,6 +1,6 @@
 <?php
 namespace MID\Functions\Shortcodes;
-use MID\Functions\Utility as U;
+use MID\Functions\Support\Utility as U;
 use MID\Functions\BaseClasses\Shortcode;
 
 class {{className}} extends Shortcode{

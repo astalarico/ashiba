@@ -1,4 +1,5 @@
 if (process.env.npm_config_{{arg_snaked}}) {
+    entity = "{{arg_slug}}";
     mix.js(
         "resources/js/client/{{arg_slug}}/index.js",
         "public/js/client/mid-functions-{{arg_slug}}.js"
