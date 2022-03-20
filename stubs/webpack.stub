@@ -7,6 +7,6 @@ if (process.env.npm_config_{{arg_snaked}}) {
     .setResourceRoot('/wp-content/plugins/mid-functions/public');
     mix.sass(
         "resources/sass/client/{{arg_slug}}/index.scss",
-        "public/css/client/{{arg_slug}}mid-functions-{{arg_slug}}.css"
+        "public/css/client/{{arg_slug}}/mid-functions-{{arg_slug}}.css"
     );
 }
